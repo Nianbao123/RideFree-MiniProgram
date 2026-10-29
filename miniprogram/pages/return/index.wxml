@@ -1,0 +1,31 @@
+<!--pages/return/index.wxml-->
+<view class="container">
+  <view class="card" wx:if="{{order}}">
+    <view class="row">
+      <text class="label">车牌</text>
+      <text class="value">{{order.bikeId}}</text>
+    </view>
+    <view class="row">
+      <text class="label">开始时间</text>
+      <text class="value">{{order.startTimeText}}</text>
+    </view>
+    <view class="row">
+      <text class="label">计费标准</text>
+      <text class="value">0.1 元 / 分钟</text>
+    </view>
+  </view>
+
+  <view class="empty" wx:else>当前没有进行中的订单</view>
+
+  <button class="btn" type="primary" loading="{{loading}}" bindtap="onReturn">
+    还车结算
+  </button>
+
+  <view class="result" wx:if="{{result}}">
+    <view class="fee">¥ {{result.fee}}</view>
+    <view class="result_info">
+      骑行 {{result.minutes}} 分钟 · {{result.startTimeText}} 至 {{result.endTimeText}}
+    </view>
+    <view class="result_tip">车辆已解锁为可用状态，本次行程已结束</view>
+  </view>
+</view>

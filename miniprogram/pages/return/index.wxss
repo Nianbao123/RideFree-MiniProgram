@@ -1,0 +1,74 @@
+/**pages/return/index.wxss**/
+page {
+  background-color: #f6f6f6;
+}
+
+.container {
+  padding: 32rpx;
+  box-sizing: border-box;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  padding: 8rpx 28rpx;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+  font-size: 28rpx;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.label {
+  color: #888888;
+}
+
+.value {
+  color: #333333;
+}
+
+.empty {
+  padding: 60rpx 0;
+  text-align: center;
+  color: #b2b2b2;
+  font-size: 28rpx;
+}
+
+.btn {
+  margin-top: 60rpx;
+  border-radius: 44rpx;
+}
+
+.result {
+  margin-top: 60rpx;
+  padding: 40rpx 32rpx;
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  text-align: center;
+}
+
+.fee {
+  font-size: 64rpx;
+  font-weight: 600;
+  color: #fa5151;
+}
+
+.result_info {
+  margin-top: 16rpx;
+  font-size: 26rpx;
+  color: #666666;
+}
+
+.result_tip {
+  margin-top: 20rpx;
+  font-size: 24rpx;
+  color: #b2b2b2;
+}

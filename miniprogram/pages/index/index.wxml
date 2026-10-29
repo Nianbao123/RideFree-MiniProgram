@@ -1,0 +1,71 @@
+<!--pages/index/index.wxml-->
+<view class="page">
+  <!-- 顶部标题区 -->
+  <view class="header">
+    <view class="header_title">安大自由行</view>
+    <view class="header_sub">安大人自己的车租借平台</view>
+  </view>
+
+  <!-- 地图 -->
+  <view class="map_wrap">
+    <map
+      id="bikeMap"
+      class="map"
+      latitude="{{latitude}}"
+      longitude="{{longitude}}"
+      scale="{{scale}}"
+      markers="{{markers}}"
+      show-location
+      bindmarkertap="onMarkerTap"
+    ></map>
+    <view class="map_stat">
+      <text class="map_stat_num">{{markers.length}}</text>
+      <text class="map_stat_unit">辆可用</text>
+    </view>
+  </view>
+
+  <!-- 车辆列表 -->
+  <scroll-view class="list" scroll-y enable-flex>
+    <view class="list_title">附近车辆</view>
+
+    <view
+      class="card"
+      wx:for="{{markers}}"
+      wx:key="bikeId"
+      data-bikeid="{{item.bikeId}}"
+      bindtap="onCardTap"
+    >
+      <view class="card_icon">车</view>
+      <view class="card_body">
+        <view class="card_id">{{item.bikeId}}</view>
+        <view class="card_type">{{item.type || '单车'}} · 可租借</view>
+      </view>
+      <view class="card_btn">扫码用车</view>
+    </view>
+
+    <view class="empty" wx:if="{{markers.length === 0}}">
+      暂无可用车辆，请稍后刷新
+    </view>
+
+    <!-- 进行中的订单 -->
+    <view class="current" wx:if="{{currentOrder}}">
+      <view class="current_title">正在用车</view>
+      <view class="current_info">
+        {{currentOrder.bikeId}} · {{currentOrder.startTimeText}} 开始计费
+      </view>
+      <view class="current_btn" bindtap="goReturn">去还车</view>
+    </view>
+
+    <view class="placeholder"></view>
+  </scroll-view>
+
+  <!-- 底部固定操作栏 -->
+  <view class="footer">
+    <button class="btn_primary" hover-class="btn_primary_hover" bindtap="onScanRent">
+      我要用车
+    </button>
+    <button class="btn_ghost" hover-class="btn_ghost_hover" bindtap="onRentOut">
+      我要出租
+    </button>
+  </view>
+</view>
